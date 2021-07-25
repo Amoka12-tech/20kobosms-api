@@ -23,12 +23,13 @@ const sendMailMessage = async (user, subject, output) => {
     transporter.sendMail(mailOptions, (error, info) => {
         if(error) {
             console.log("Didn't send");
-            return console.log(error.message);
+            return false;
         }
 
         if(info) {
             console.log("Message sent: %s", info.messageId);
             console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+            return true;
         }
     });
 }

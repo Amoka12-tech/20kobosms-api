@@ -12,6 +12,9 @@ export default function() {
     });
 
     return {
+        escape(string) {
+            return connection.escape(string);
+        },
         query(sql, args) {
             return util.promisify( connection.query )
                 .call( connection, sql, args );
